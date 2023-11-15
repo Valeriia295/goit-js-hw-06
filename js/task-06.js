@@ -2,12 +2,13 @@ const textInput = document.querySelector("input#validation-input");
 
 // Blur
 textInput.addEventListener("blur", () => {
-  const textInputLength = textInput.value.length;
-  const dataLength = textInput.getAttribute("data-length");
-  const dataValue = parseInt(dataLength);
-  if (textInputLength === dataValue) {
+  if (
+    textInput.value.length === Number(textInput.attributes["data-length"].value)
+  ) {
     textInput.classList.add("valid");
+    textInput.classList.remove("invalid");
   } else {
     textInput.classList.add("invalid");
+    textInput.classList.remove("valid");
   }
 });
